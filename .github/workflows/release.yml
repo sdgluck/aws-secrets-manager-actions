@@ -35,7 +35,7 @@ jobs:
       - name: Rlease to GitHub Registry
         uses: JS-DevTools/npm-publish@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
           registry: 'https://npm.pkg.github.com'
       - name: Release to GitHub Actions Market
         uses: technote-space/release-github-actions@v6

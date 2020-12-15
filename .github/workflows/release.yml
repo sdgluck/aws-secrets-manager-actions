@@ -32,6 +32,7 @@ jobs:
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
+          check-version: false
       - name: Rlease to GitHub Registry
         uses: JS-DevTools/npm-publish@v1
         with:

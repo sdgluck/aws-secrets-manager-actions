@@ -26,10 +26,12 @@ getSecretValue(secretsManager, secretName).then(resp => {
 
   try {
     const parsedSecret = JSON.parse(secretString)
-    Object.entries(parsedSecret).forEach(([key, value]) => {
-      core.setSecret(value)
-      core.exportVariable(key, value)
-    })
+    if (!core.getInput('EXPORT_TO_ENV')) {
+      Object.entries(parsedSecret).forEach(([key, value]) => {
+        core.setSecret(value)
+        core.exportVariable(key, value)
+      })
+    }
     if (outputPath) {
       const secretsAsEnv = Object.entries(parsedSecret).map(([key, value]) => `${key}=${value}`).join('\n')
       fs.writeFileSync(outputPath, secretsAsEnv)

@@ -16,6 +16,9 @@ inputs:
   OUTPUT_PATH:
     description: 'Set output file where variables are write'
     required: false
+  EXPORT_TO_ENV:
+    description: 'Whether to export secrets to the environment (set to false and use OUTPUT_PATH if you only want to write to an .env file, for example)'
+    required: true
 runs:
   using: 'node12'
   main: 'dist/index.js'
